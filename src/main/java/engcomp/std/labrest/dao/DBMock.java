@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import engcomp.std.labrest.entities.Hospedagem;
+import engcomp.std.labrest.entities.Passagem;
 import engcomp.std.labrest.entities.Voo;
 import engcomp.std.labrest.entities.enums.Destino;
 import engcomp.std.labrest.entities.enums.Origem;
@@ -16,8 +17,8 @@ public class DBMock {
 
     static {
         db.put("voos", inicializarVoos());
-        db.put("passagens", new ArrayList<>());
-        db.put("hospedagem", inicializarHospedagens());
+        db.put("passagens", new ArrayList<Passagem>());
+        db.put("hospedagem", new ArrayList<Hospedagem>());
     }
 
     static ArrayList<Voo> inicializarVoos() {
@@ -41,13 +42,5 @@ public class DBMock {
             v.add(new Voo(empresa, saida, chegada, duracaoMinutos, origem, destino));
         }
         return v;
-    }
-
-    static ArrayList<Hospedagem> inicializarHospedagens() {
-        ArrayList<Hospedagem> h = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            h.add(new Hospedagem());
-        }
-        return h;
     }
 }
