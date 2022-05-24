@@ -1,5 +1,7 @@
 package engcomp.std.labrest.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,18 +21,24 @@ import engcomp.std.labrest.services.dto.ResponsePassagem;
 @RestController
 @RequestMapping("/passagens")
 public class PassagensController {
+
+    Logger log = LoggerFactory.getLogger(PassagensController.class);
+    
     @PostMapping
     public ResponseComprarPassagem comprar(@RequestBody ComprarPassagemDTO dto) throws VooException {
+        log.info("Compra realizada!");
         return PassagensService.comprar(dto);
     }
 
     @GetMapping
     public ResponsePassagem buscar() {
+        log.info("Busca realizada!");
         return PassagensService.buscar();
     }
 
     @GetMapping("/{id}")
     public ResponsePassagem buscarPorId(@PathVariable(value = "id") String id) {
+        log.info("Passagem "+id+" buscada!");
         return PassagensService.buscarPorId(id);
     }
 
