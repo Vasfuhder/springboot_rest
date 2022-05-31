@@ -85,7 +85,7 @@ def comprar(voos, id):
     qtde_pessoas = int(input("Insira a quantidade de pessoas: "))
     poltronas = []
     for i in range(qtde_pessoas):
-        poltronas.append(int(input(f"Insira a poltroa para a pessoa {i+1}: ")))
+        poltronas.append(int(input(f"Insira a poltrona para a pessoa {i+1}: ")))
     body = {
         "id_voo": voos[id]["id"],
         "pessoas": [gen_pessoa(i) for i in range(qtde_pessoas)],
